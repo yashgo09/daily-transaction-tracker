@@ -1,35 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { signInWithEmailPassword, signUpWithEmailPassword } from "./firebase";
+import { auth } from "./firebase";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
+
+  const registerUser = () => {
+    signUpWithEmailPassword(formData);
+  };
+  const loginUser = () => {
+    signInWithEmailPassword(loginDetails);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <main>
+      <form>
+        <h1>Sign Up Form</h1>
+        <label>
+          Email
+          <input
+            type="email"
+            name="email"
+            onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            name="password"
+            onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
+          />
+        </label>
+        <button type="submit" onClick={registerUser}>
+          Register
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      </form>
+      <form>
+        <h1>Login Form</h1>
+        <label>
+          Email
+          <input
+            type="email"
+            name="email"
+            onChange={(e) => setLoginDetails((prev) => ({ ...prev, email: e.target.value }))}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            name="password"
+            onChange={(e) => setLoginDetails((prev) => ({ ...prev, password: e.target.value }))}
+          />
+        </label>
+        <button type="submit" onClick={loginUser}>
+          Login
+        </button>
+      </form>
+
+      <button
+        className="btn"
+        onClick={() => {
+          auth.signOut();
+        }}
+      >
+        Log Out
+      </button>
+    </main>
+  );
 }
 
-export default App
+export default App;

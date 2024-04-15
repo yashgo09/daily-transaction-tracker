@@ -16,7 +16,7 @@ function App() {
 
   return (
     <main>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <h1>Sign Up Form</h1>
         <label>
           Email
@@ -38,7 +38,7 @@ function App() {
           Register
         </button>
       </form>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <h1>Login Form</h1>
         <label>
           Email

@@ -31,6 +31,8 @@ export const signUpWithEmailPassword = async (formData: { email: string; passwor
   const email = formData.email;
   const password = formData.password;
 
+  console.log(email, password);
+
   try {
     const userCredentails = await createUserWithEmailAndPassword(auth, email, password);
     console.log(userCredentails.user);
@@ -57,8 +59,8 @@ export const signInWithEmailPassword = async (loginDetails: {
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log(user.uid);
-    console.log(user.email);
+    console.log("UID", user.uid);
+    console.log("EMAIL", user.email);
   }
 });
 

@@ -31,9 +31,13 @@ export default function Login() {
     setOpen(true);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
-      <Snackbar open={open} autoHideDuration={6000}>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert severity={success ? "success" : "error"} variant="filled" sx={{ width: "100%" }}>
           Signed Up Successfully
         </Alert>

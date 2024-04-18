@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { FormEvent, useState } from "react";
 import { auth } from "../firebase";
 import { Alert, Button, Snackbar, TextField, Typography } from "@mui/material";
+// import { redirect } from "react-router-dom";
 
 export default function Login() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
@@ -29,6 +30,8 @@ export default function Login() {
     }
 
     setOpen(true);
+
+    window.location.pathname = "/dashboard";
   };
 
   const handleClose = () => {

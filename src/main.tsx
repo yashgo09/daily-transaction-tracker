@@ -14,6 +14,7 @@ import "@fontsource/roboto/700.css";
 import ErrorPage from "./error-page.js";
 import Login from "./routes/Login.js";
 import SignUp from "./routes/SignUp.js";
+import Dashboard from "./routes/Dashboard.js";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <SignUp />,
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard />,
       },
     ],
   },

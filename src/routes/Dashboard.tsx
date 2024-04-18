@@ -1,7 +1,10 @@
-import { auth } from "../firebase";
+import { useContext } from "react";
+import { AuthContext } from "../main";
 
 export default function Dashboard() {
-  console.log("dashboard current user", auth.currentUser?.uid);
+  const user = useContext(AuthContext);
 
-  return <div>Dashboard</div>;
+  console.log("AuthContext", user);
+
+  return <div>dashboard</div>;
 }

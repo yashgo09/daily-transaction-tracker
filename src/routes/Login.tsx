@@ -10,8 +10,6 @@ export default function Login() {
   const [open, setOpen] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>();
 
-  console.log(loginDetails);
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 

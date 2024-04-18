@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 import ReactDOM from "react-dom/client";
 // import App from "./App.tsx";
 import "./firebase.js";
@@ -15,6 +15,8 @@ import ErrorPage from "./error-page.js";
 import Login from "./routes/Login.js";
 import SignUp from "./routes/SignUp.js";
 import Dashboard from "./routes/Dashboard.js";
+
+export const AuthContext = createContext<unknown>(null);
 
 const router = createBrowserRouter([
   {

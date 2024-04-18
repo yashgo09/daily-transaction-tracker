@@ -64,6 +64,8 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
+export const lolUser = auth.currentUser;
+
 // const addData = async () => {
 //   try {
 //     const docRef = await addDoc(collection(db, "products"), {

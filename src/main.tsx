@@ -13,6 +13,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import ErrorPage from "./error-page.js";
 import Login from "./routes/Login.js";
+import SignUp from "./routes/SignUp.js";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "register",
+        element: <SignUp />,
       },
     ],
   },

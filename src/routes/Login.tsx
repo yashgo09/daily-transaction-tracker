@@ -1,10 +1,13 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { FormEvent, useState } from "react";
 import { auth } from "../firebase";
-import { Button, TextField, Typography } from "@mui/material";
+import { Alert, Button, Snackbar, TextField, Typography } from "@mui/material";
 
 export default function Login() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
+
+  const [open, setOpen] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>();
 
   console.log(loginDetails);
 
@@ -18,14 +21,24 @@ export default function Login() {
         loginDetails.password
       );
 
-      console.log("Sign Up Successful", userCredentials);
+      setSuccess(true);
+
+      console.log("Sign In Successful", userCredentials);
     } catch (e) {
-      console.error(e);
+      console.error("Error while sign in", e);
     }
+
+    setOpen(true);
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <Snackbar open={open} autoHideDuration={6000}>
+        <Alert severity={success ? "success" : "error"} variant="filled" sx={{ width: "100%" }}>
+          Signed Up Successfully
+        </Alert>
+      </Snackbar>
+
       <Typography variant="h3">Login Form</Typography>
       <TextField
         id="outlined-basic"
